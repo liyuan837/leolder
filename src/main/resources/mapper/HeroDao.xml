@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.liyuan.demo.dao.HeroDao">
+    <select id="queryAll" resultType="hero">
+        select * from hero order by createtime desc
+    </select>
+
+    <select id="findById" parameterType="int" resultType="com.liyuan.demo.entity.Hero">
+        select * from hero where id = #{id}
+    </select>
+
+    <insert id="saveHero" parameterType="com.liyuan.demo.entity.Hero" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+        insert into hero(name,type,`describe`,skill,createtime) VALUES (#{name},#{type},#{describe},#{skill},#{createtime})
+    </insert>
+
+    <update id="updateHero" parameterType="com.liyuan.demo.entity.Hero">
+        update hero
+        <set>
+            <if test="name!=null">
+                name=#{name},
+            </if>
+            <if test="type!=null">
+                type=#{type},
+            </if>
+            <if test="describe!=null">
+                describe=#{describe},
+            </if>
+            <if test="skill!=null">
+                skill=#{skill}
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteHero" parameterType="int">
+        delete from hero where id=#{id}
+    </delete>
+</mapper>
