@@ -1,5 +1,6 @@
 package com.liyuan.demo.service;
 
+import org.springframework.stereotype.Service;
 import wechat.message.resp.TextMessage;
 import wechat.util.MessageUtil;
 
@@ -10,6 +11,7 @@ import java.util.Map;
 /**
  * 核心服务类
  */
+@Service
 public class CoreService {
 
 	/**

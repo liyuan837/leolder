@@ -22,7 +22,7 @@ public class WechatController {
 	public void doProcess(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("UTF-8");
-		response.setCharacterEncoding("UTF-8");
+		response.setHeader("Content-type", "text/html;charset=UTF-8");
 		String method = request.getMethod();
 
 		if (method.equals("GET")) {
